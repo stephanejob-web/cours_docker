@@ -1095,12 +1095,96 @@ Créez un fichier `index.php` avec le Bloc-notes et copiez-collez le code ci-des
 
 ---
 
+**🧠 MAIS AVANT... COMPRENDRE LES RÉSEAUX DOCKER !**
+
+### Pourquoi on ne peut pas juste lancer les 2 conteneurs ?
+
+**Imaginez cette situation :**
+
+Vous avez 2 personnes dans 2 pièces différentes qui doivent se parler :
+- **Pièce 1** = Conteneur PHP (votre site web)
+- **Pièce 2** = Conteneur MariaDB (votre base de données)
+
+**❌ SANS RÉSEAU = Impossible de communiquer**
+```
+┌─────────────────┐         ┌──────────────────┐
+│  Conteneur PHP  │    X    │ Conteneur MariaDB│
+│                 │  Mur    │                  │
+│  "Où es-tu ?"   │ ═══════ │  "Je suis là !"  │
+└─────────────────┘         └──────────────────┘
+```
+
+**✅ AVEC RÉSEAU = Ils peuvent se parler par leur nom !**
+```
+┌─────────────────┐         ┌──────────────────┐
+│  Conteneur PHP  │ ←─────→ │ Conteneur MariaDB│
+│                 │ Réseau  │                  │
+│  "Hé MariaDB !" │ Docker  │  "Oui PHP ?"     │
+└─────────────────┘         └──────────────────┘
+```
+
+---
+
+### Comprendre avec une analogie simple
+
+**SANS RÉSEAU DOCKER :**
+
+C'est comme si vous vouliez appeler votre ami, mais :
+- Vous ne connaissez pas son numéro de téléphone
+- Son numéro change tout le temps
+- Impossible de le joindre !
+
+**AVEC RÉSEAU DOCKER :**
+
+Maintenant, vous avez un annuaire :
+- Votre ami s'appelle "MariaDB"
+- Vous l'appelez par son nom
+- Docker trouve automatiquement son "numéro" (adresse IP)
+
+**Dans le code PHP, regardez ligne 1040 du fichier :**
+```php
+$host = 'ma-base-de-donnees';  // ← On utilise le NOM, pas une adresse IP !
+```
+
+**Grâce au réseau Docker, PHP sait où trouver MariaDB juste avec son nom !** 🎯
+
+---
+
+### Les 3 choses à retenir
+
+**1. Un réseau Docker = Un annuaire de noms**
+```
+Réseau "mon-reseau" :
+├── ma-base-de-donnees  → 172.18.0.2
+├── mon-site-php        → 172.18.0.3
+```
+
+**2. Sans réseau, les conteneurs sont isolés**
+```
+Conteneur 1 : "Je ne connais personne"
+Conteneur 2 : "Moi non plus"
+```
+
+**3. Avec un réseau, ils se trouvent par leur nom**
+```
+PHP : "Hé ma-base-de-donnees, tu es où ?"
+Docker : "Elle est à 172.18.0.2, je te connecte !"
+MariaDB : "Salut PHP !"
+```
+
+---
+
 **🚀 LANCEMENT DU PROJET**
 
 **Étape 1 : Créer un réseau pour que les conteneurs se parlent**
 ```bash
 docker network create mon-reseau
 ```
+
+**💡 Ce que ça fait :**
+- Crée un réseau privé appelé "mon-reseau"
+- Comme créer un groupe WhatsApp pour vos conteneurs !
+- Tous les conteneurs dans ce réseau pourront se parler par leur nom
 
 **Étape 2 : Lancer MariaDB**
 ```bash
