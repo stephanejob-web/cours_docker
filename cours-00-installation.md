@@ -1,21 +1,30 @@
-# Cours 0 : Installation de Docker sur Ubuntu 🐳
+# Cours 0 : Installation de Docker - Tous Systèmes 🐳
 
 ## 🎯 Ce que vous allez apprendre
 
 À la fin de ce cours, vous aurez :
-- ✅ Docker Engine installé et fonctionnel
-- ✅ Docker Compose installé
-- ✅ Les permissions correctement configurées
+- ✅ Docker Desktop ou Docker Engine installé sur votre système
+- ✅ Docker Compose installé et fonctionnel
 - ✅ Vérifié que tout fonctionne
-- ✅ Résolu les problèmes courants
+- ✅ Résolu les problèmes courants spécifiques à votre OS
 
-**Durée : 30 minutes**
+**Durée : 30-45 minutes selon votre système**
 
 ---
 
-## 📋 Prérequis
+## 🖥️ Choisissez votre système d'exploitation
 
-### Système requis
+Cliquez sur votre système pour accéder aux instructions :
+
+- **[🐧 Linux (Ubuntu/Debian)](#linux-ubuntu--debian)**
+- **[🍎 macOS](#macos)**
+- **[🪟 Windows](#windows)**
+
+---
+
+# 🐧 Linux (Ubuntu / Debian)
+
+## 📋 Prérequis
 
 - **OS** : Ubuntu 20.04 LTS ou supérieur (64 bits)
 - **RAM** : 4 Go minimum (8 Go recommandé)
@@ -26,36 +35,15 @@
 ### Vérifier votre version Ubuntu
 
 ```bash
-# Afficher la version d'Ubuntu
 lsb_release -a
-```
-
-**Résultat attendu :**
-```
-Distributor ID: Ubuntu
-Description:    Ubuntu 22.04.x LTS
-Release:        22.04
-Codename:       jammy
 ```
 
 ---
 
-## 🗑️ Étape 1 : Désinstaller les anciennes versions (si existantes)
-
-**Pourquoi ?** Pour éviter les conflits avec d'anciennes installations.
+## 🗑️ Étape 1 : Désinstaller les anciennes versions
 
 ```bash
-# Supprimer les anciennes versions de Docker
 sudo apt-get remove docker docker-engine docker.io containerd runc
-
-# Note : c'est normal si cette commande dit qu'aucun paquet n'est installé
-```
-
-**Résultat attendu :**
-```
-Lecture des listes de paquets... Fait
-...
-0 mis à jour, 0 nouvellement installés, 0 à enlever...
 ```
 
 ---
@@ -63,21 +51,15 @@ Lecture des listes de paquets... Fait
 ## 📦 Étape 2 : Mettre à jour le système
 
 ```bash
-# Mettre à jour la liste des paquets
 sudo apt-get update
-
-# Mettre à jour les paquets installés (optionnel mais recommandé)
 sudo apt-get upgrade -y
 ```
-
-**Temps estimé :** 2-5 minutes selon votre connexion
 
 ---
 
 ## 🔑 Étape 3 : Installer les prérequis
 
 ```bash
-# Installer les paquets nécessaires
 sudo apt-get install -y \
     ca-certificates \
     curl \
@@ -85,180 +67,371 @@ sudo apt-get install -y \
     lsb-release
 ```
 
-**Ce que font ces paquets :**
-- `ca-certificates` : Certificats SSL pour télécharger en sécurité
-- `curl` : Outil pour télécharger des fichiers
-- `gnupg` : Gestion des clés de sécurité
-- `lsb-release` : Informations sur votre système
-
 ---
 
-## 🔐 Étape 4 : Ajouter la clé GPG officielle de Docker
+## 🔐 Étape 4 : Ajouter la clé GPG officielle
 
 ```bash
-# Créer le dossier pour les clés
 sudo install -m 0755 -d /etc/apt/keyrings
-
-# Télécharger la clé GPG de Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-# Définir les bonnes permissions
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
-
-**Pourquoi ?** Pour vérifier que les paquets Docker viennent bien du site officiel.
 
 ---
 
 ## 📚 Étape 5 : Ajouter le dépôt Docker
 
 ```bash
-# Ajouter le dépôt officiel Docker
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-
-**Cette commande :**
-- Détecte automatiquement votre architecture (amd64, arm64...)
-- Configure le dépôt Docker pour votre version Ubuntu
 
 ---
 
 ## 🐳 Étape 6 : Installer Docker Engine
 
 ```bash
-# Mettre à jour la liste des paquets (avec le nouveau dépôt)
 sudo apt-get update
-
-# Installer Docker Engine, CLI et containerd
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-**Ce qui est installé :**
-- `docker-ce` : Docker Engine (moteur principal)
-- `docker-ce-cli` : Interface en ligne de commande
-- `containerd.io` : Runtime des conteneurs
-- `docker-buildx-plugin` : Builder avancé
-- `docker-compose-plugin` : Docker Compose v2
-
-**Temps estimé :** 2-3 minutes
-
 ---
 
-## ✅ Étape 7 : Vérifier l'installation
-
-```bash
-# Vérifier la version de Docker
-sudo docker --version
-```
-
-**Résultat attendu :**
-```
-Docker version 24.0.x, build xxxxx
-```
-
-```bash
-# Vérifier que le service Docker fonctionne
-sudo systemctl status docker
-```
-
-**Résultat attendu :**
-```
-● docker.service - Docker Application Container Engine
-   Loaded: loaded
-   Active: active (running) since ...
-```
-
-Appuyez sur `q` pour quitter.
-
----
-
-## 🎉 Étape 8 : Test avec Hello World
-
-```bash
-# Lancer le conteneur de test
-sudo docker run hello-world
-```
-
-**Résultat attendu :**
-```
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-...
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-...
-```
-
-**Si vous voyez ce message, BRAVO ! Docker fonctionne ! 🎉**
-
----
-
-## 👤 Étape 9 : Configurer les permissions (IMPORTANT)
-
-**Le problème :** Pour l'instant, vous devez taper `sudo` avant chaque commande Docker.
-
-**La solution :** Ajouter votre utilisateur au groupe `docker`.
+## 👤 Étape 7 : Configurer les permissions
 
 ```bash
 # Ajouter votre utilisateur au groupe docker
 sudo usermod -aG docker $USER
-```
 
-**Important :** Pour que ce changement prenne effet, vous devez :
-
-**Option 1 : Se déconnecter/reconnecter**
-```bash
-# Fermer la session et se reconnecter
-# Ou redémarrer l'ordinateur
-```
-
-**Option 2 : Activer dans le terminal actuel (temporaire)**
-```bash
-# Activer le nouveau groupe dans le terminal actuel
+# Se déconnecter et se reconnecter OU utiliser :
 newgrp docker
 ```
 
-### Vérifier que ça marche sans sudo
+---
+
+## ✅ Étape 8 : Vérifier l'installation
 
 ```bash
-# Tester sans sudo (après déconnexion/reconnexion)
+docker --version
+docker compose version
 docker run hello-world
 ```
 
-**Si ça marche sans `sudo`, c'est parfait ! ✅**
+**Si "Hello from Docker!" s'affiche, BRAVO ! ✅**
 
 ---
 
-## 🔧 Étape 10 : Installer Docker Compose (standalone - optionnel)
+# 🍎 macOS
 
-**Note :** Docker Compose v2 est déjà installé comme plugin (`docker compose`).
+## 📋 Prérequis
 
-Si vous voulez aussi la commande `docker-compose` (v1 style) :
+- **macOS** : 11 (Big Sur) ou supérieur
+- **Processeur** : Intel ou Apple Silicon (M1/M2/M3)
+- **RAM** : 4 Go minimum (8 Go recommandé)
+- **Espace disque** : 10 Go libres minimum
+
+---
+
+## 📥 Étape 1 : Télécharger Docker Desktop
+
+### Option 1 : Via le site officiel (recommandé)
+
+1. Aller sur : https://www.docker.com/products/docker-desktop
+2. Cliquer sur **"Download for Mac"**
+3. Choisir :
+   - **Mac with Intel chip** si vous avez un Mac Intel
+   - **Mac with Apple chip** si vous avez un Mac M1/M2/M3
+
+### Option 2 : Via Homebrew
 
 ```bash
-# Télécharger Docker Compose standalone
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# Installer Homebrew si pas déjà fait
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Rendre exécutable
-sudo chmod +x /usr/local/bin/docker-compose
-
-# Vérifier la version
-docker-compose --version
+# Installer Docker Desktop
+brew install --cask docker
 ```
-
-**Quelle version utiliser ?**
-- `docker compose` (plugin v2) ✅ Recommandé, moderne
-- `docker-compose` (standalone v1) ⚠️ Ancienne version
-
-**Dans ce cours, nous utiliserons `docker compose` (v2).**
 
 ---
 
-## 🎯 Étape 11 : Tests de validation complète
+## 🔧 Étape 2 : Installer Docker Desktop
 
-### Test 1 : Vérifier les versions
+1. **Ouvrir le fichier téléchargé** : `Docker.dmg`
+2. **Glisser Docker** dans le dossier Applications
+3. **Ouvrir Docker** depuis Applications
+4. **Autoriser l'accès** :
+   - macOS va demander votre mot de passe administrateur
+   - Cliquer sur **"OK"** pour autoriser
+
+---
+
+## 🚀 Étape 3 : Première configuration
+
+1. **Docker démarre** - Vous verrez l'icône de baleine dans la barre de menu
+2. **Accepter les conditions d'utilisation**
+3. **Configurer les ressources** (optionnel) :
+   - Cliquer sur l'icône Docker → **Settings**
+   - **Resources** → Ajuster RAM et CPU si nécessaire
+   - Recommandé : 4 Go RAM, 2 CPUs minimum
+
+---
+
+## ✅ Étape 4 : Vérifier l'installation
+
+Ouvrir le **Terminal** et taper :
+
+```bash
+docker --version
+docker compose version
+docker run hello-world
+```
+
+**Résultat attendu :**
+```
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
+**Si ça marche, BRAVO ! ✅**
+
+---
+
+## 🔧 Paramètres recommandés pour macOS
+
+### Augmenter les ressources (si vous avez 16 Go+ RAM)
+
+1. Cliquer sur l'icône Docker (baleine) → **Settings**
+2. **Resources** :
+   - **CPUs** : 4
+   - **Memory** : 8 GB
+   - **Swap** : 2 GB
+   - **Disk image size** : 60 GB
+
+3. Cliquer sur **Apply & Restart**
+
+---
+
+## ⚠️ Problèmes courants macOS
+
+### Problème 1 : "Docker Desktop requires a newer version of macOS"
+
+**Solution :**
+- Mettre à jour macOS vers la version 11 minimum
+- Ou installer Docker Toolbox (ancienne version)
+
+---
+
+### Problème 2 : Docker démarre lentement sur Mac M1/M2/M3
+
+**Solution :**
+```bash
+# Vérifier que vous avez bien la version Apple Silicon
+docker version | grep -i arch
+
+# Devrait afficher : arm64
+```
+
+Si ça affiche "amd64", vous avez téléchargé la mauvaise version !
+
+---
+
+### Problème 3 : "Cannot connect to Docker daemon"
+
+**Solution :**
+1. Vérifier que Docker Desktop est bien lancé (icône baleine en haut)
+2. Redémarrer Docker Desktop
+3. Si ça ne marche pas : Désinstaller et réinstaller
+
+---
+
+# 🪟 Windows
+
+## 📋 Prérequis
+
+- **Windows** : Windows 10 version 2004+ ou Windows 11
+- **RAM** : 4 Go minimum (8 Go recommandé)
+- **Virtualisation** : Activée dans le BIOS
+- **WSL 2** : Windows Subsystem for Linux v2 (sera installé automatiquement)
+
+---
+
+## 🔍 Étape 1 : Vérifier la version de Windows
+
+1. Appuyer sur **Windows + R**
+2. Taper : `winver`
+3. Vérifier :
+   - **Windows 10** : Version 2004 (Build 19041) ou supérieur
+   - **Windows 11** : Toutes les versions
+
+---
+
+## ⚙️ Étape 2 : Activer la virtualisation
+
+### Vérifier si c'est déjà activé
+
+1. Ouvrir le **Gestionnaire des tâches** (Ctrl+Shift+Esc)
+2. Onglet **Performance** → **CPU**
+3. Vérifier "Virtualisation" : doit afficher **Activé**
+
+### Si "Désactivé" : Activer dans le BIOS
+
+1. **Redémarrer le PC**
+2. Appuyer sur **F2** ou **Del** ou **F10** (selon votre PC) au démarrage
+3. Chercher :
+   - Intel : **Intel VT-x** ou **Intel Virtualization Technology**
+   - AMD : **AMD-V** ou **SVM Mode**
+4. **Activer** l'option
+5. **Sauvegarder et quitter** (F10)
+
+---
+
+## 📥 Étape 3 : Télécharger Docker Desktop
+
+1. Aller sur : https://www.docker.com/products/docker-desktop
+2. Cliquer sur **"Download for Windows"**
+3. Télécharger **Docker Desktop Installer.exe**
+
+---
+
+## 🔧 Étape 4 : Installer Docker Desktop
+
+1. **Double-cliquer** sur `Docker Desktop Installer.exe`
+2. **Cocher** : "Use WSL 2 instead of Hyper-V" (recommandé)
+3. **Cocher** : "Add shortcut to desktop"
+4. Cliquer sur **"OK"**
+5. **Attendre** l'installation (5-10 minutes)
+6. Cliquer sur **"Close and restart"**
+
+**⚠️ IMPORTANT : Le PC va redémarrer !**
+
+---
+
+## 🚀 Étape 5 : Configuration initiale
+
+### Après le redémarrage
+
+1. **Docker Desktop se lance automatiquement**
+2. Un message peut apparaître : "WSL 2 installation is incomplete"
+   - Si oui, cliquer sur le lien et suivre les instructions
+   - Télécharger et installer : **WSL2 Linux kernel update package**
+   - Redémarrer Docker Desktop
+
+3. **Accepter les conditions d'utilisation**
+
+4. **Créer un compte Docker Hub** (optionnel)
+   - Vous pouvez cliquer sur "Skip" si vous voulez
+
+---
+
+## ✅ Étape 6 : Vérifier l'installation
+
+### Ouvrir PowerShell ou CMD
+
+1. Appuyer sur **Windows + R**
+2. Taper : `powershell` ou `cmd`
+3. Appuyer sur **Entrée**
+
+### Tester Docker
+
+```powershell
+docker --version
+docker compose version
+docker run hello-world
+```
+
+**Résultat attendu :**
+```
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
+**Si ça marche, BRAVO ! ✅**
+
+---
+
+## 🔧 Configuration recommandée Windows
+
+### Paramètres Docker Desktop
+
+1. **Cliquer sur l'icône Docker** (dans la barre des tâches)
+2. **Settings** → **Resources**
+3. **WSL Integration** :
+   - Activer **"Enable integration with my default WSL distro"**
+   - Si vous avez Ubuntu dans WSL : Activer l'intégration
+
+4. **Resources** → **Advanced** :
+   - **CPUs** : 2-4 (selon votre PC)
+   - **Memory** : 4-8 GB
+   - **Swap** : 1 GB
+
+5. Cliquer sur **Apply & Restart**
+
+---
+
+## ⚠️ Problèmes courants Windows
+
+### Problème 1 : "WSL 2 installation is incomplete"
+
+**Solution :**
+```powershell
+# Ouvrir PowerShell en administrateur (clic droit → "Exécuter en tant qu'administrateur")
+
+# Activer WSL
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+# Activer la plateforme de machine virtuelle
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+# Redémarrer le PC
+Restart-Computer
+```
+
+Puis télécharger et installer : https://aka.ms/wsl2kernel
+
+---
+
+### Problème 2 : "Hardware assisted virtualization is not enabled"
+
+**Solution :**
+- La virtualisation n'est pas activée dans le BIOS
+- Suivre les instructions de l'Étape 2 ci-dessus
+
+---
+
+### Problème 3 : Docker démarre lentement ou freeze
+
+**Solution :**
+1. **Réduire les ressources** dans Settings → Resources
+2. **Désactiver les antivirus** temporairement
+3. **Nettoyer Docker** :
+   ```powershell
+   docker system prune -a
+   ```
+
+---
+
+### Problème 4 : "This version of Docker Desktop requires Windows 10 version 2004"
+
+**Solution :**
+- Mettre à jour Windows 10 vers la version 2004 minimum
+- Windows Update → Rechercher les mises à jour
+
+---
+
+### Problème 5 : Docker fonctionne dans WSL mais pas dans PowerShell
+
+**Solution :**
+1. Docker Desktop → Settings
+2. **General** → Cocher "Use the WSL 2 based engine"
+3. **Resources** → **WSL Integration** → Activer pour votre distribution
+4. Redémarrer Docker Desktop
+
+---
+
+# 🧪 Tests de Validation (Tous Systèmes)
+
+## Test 1 : Vérifier les versions
 
 ```bash
 # Version Docker
@@ -266,12 +439,17 @@ docker --version
 
 # Version Docker Compose
 docker compose version
+
+# Informations système
+docker info
 ```
 
-### Test 2 : Lancer Nginx
+---
+
+## Test 2 : Lancer un serveur web Nginx
 
 ```bash
-# Lancer un serveur web Nginx
+# Lancer Nginx
 docker run -d -p 8080:80 --name test-nginx nginx
 
 # Vérifier qu'il tourne
@@ -280,101 +458,111 @@ docker ps
 
 **Ouvrir dans le navigateur :** http://localhost:8080
 
-**Vous devez voir :** La page "Welcome to nginx!"
+**Vous devez voir :** "Welcome to nginx!"
 
-### Test 3 : Nettoyer
+---
+
+## Test 3 : Tester Docker Compose
+
+Créer un fichier `test-compose.yml` :
+
+```yaml
+version: '3.8'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+```
+
+Lancer :
 
 ```bash
-# Arrêter et supprimer le conteneur de test
+docker compose -f test-compose.yml up -d
+```
+
+Ouvrir : http://localhost:8080
+
+---
+
+## Test 4 : Nettoyer
+
+```bash
+# Arrêter et supprimer
 docker stop test-nginx
 docker rm test-nginx
 
-# Supprimer l'image hello-world
-docker rmi hello-world nginx
+# Nettoyer tout
+docker system prune -a
 ```
 
 ---
 
-## ⚙️ Étape 12 : Configuration optionnelle (recommandé)
+# ✅ Checklist de Validation Finale
 
-### Démarrage automatique de Docker
+Cochez chaque point avant de passer au cours suivant :
 
-```bash
-# Activer le démarrage automatique de Docker au boot
-sudo systemctl enable docker
+- [ ] `docker --version` affiche une version (20.x ou 24.x)
+- [ ] `docker compose version` affiche une version (2.x)
+- [ ] `docker run hello-world` fonctionne
+- [ ] Vous avez lancé Nginx et accédé à http://localhost:8080
+- [ ] **Linux uniquement** : Docker fonctionne SANS `sudo`
+- [ ] **Windows uniquement** : WSL 2 est installé et activé
+- [ ] **macOS uniquement** : Docker Desktop démarre automatiquement
+- [ ] Vous avez nettoyé les conteneurs de test
 
-# Vérifier
-sudo systemctl is-enabled docker
-```
+**Si tous les points sont cochés : BRAVO ! Vous êtes prêt ! 🎉**
 
-**Résultat attendu :** `enabled`
+---
 
-### Limiter l'utilisation des ressources (optionnel)
+# 🔧 Commandes Utiles (Tous Systèmes)
 
-Créer le fichier `/etc/docker/daemon.json` :
-
-```bash
-sudo nano /etc/docker/daemon.json
-```
-
-Ajouter :
-
-```json
-{
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "10m",
-    "max-file": "3"
-  }
-}
-```
-
-Sauvegarder : `Ctrl+O`, `Entrée`, `Ctrl+X`
-
-Redémarrer Docker :
+## Vérification de l'installation
 
 ```bash
-sudo systemctl restart docker
+# Afficher toutes les infos Docker
+docker info
+
+# Vérifier l'espace disque utilisé
+docker system df
+
+# Voir les conteneurs en cours
+docker ps
+
+# Voir TOUS les conteneurs (même arrêtés)
+docker ps -a
 ```
 
 ---
 
-## ⚠️ Troubleshooting : Problèmes fréquents
+## Gestion de Docker Desktop (macOS & Windows)
 
-### Problème 1 : "permission denied while trying to connect"
+### macOS
+- **Démarrer** : Ouvrir "Docker" depuis Applications
+- **Arrêter** : Clic sur icône Docker → Quit Docker Desktop
+- **Redémarrer** : Clic sur icône Docker → Restart
 
-**Erreur :**
-```
-Got permission denied while trying to connect to the Docker daemon socket
-```
-
-**Solution :**
-```bash
-# Vérifier que vous êtes dans le groupe docker
-groups
-
-# Si "docker" n'apparaît pas :
-sudo usermod -aG docker $USER
-
-# Puis SE DÉCONNECTER et SE RECONNECTER
-```
+### Windows
+- **Démarrer** : Chercher "Docker Desktop" dans le menu Démarrer
+- **Arrêter** : Clic droit sur icône Docker → Quit Docker Desktop
+- **Redémarrer** : Clic droit sur icône Docker → Restart
 
 ---
 
-### Problème 2 : "Cannot connect to the Docker daemon"
+## Gestion de Docker Engine (Linux)
 
-**Erreur :**
-```
-Cannot connect to the Docker daemon at unix:///var/run/docker.sock
-```
-
-**Solution :**
 ```bash
-# Vérifier si Docker tourne
-sudo systemctl status docker
-
-# Si "inactive (dead)" :
+# Démarrer Docker
 sudo systemctl start docker
+
+# Arrêter Docker
+sudo systemctl stop docker
+
+# Redémarrer Docker
+sudo systemctl restart docker
+
+# Statut de Docker
+sudo systemctl status docker
 
 # Activer au démarrage
 sudo systemctl enable docker
@@ -382,213 +570,96 @@ sudo systemctl enable docker
 
 ---
 
-### Problème 3 : "docker: command not found"
+## Nettoyage
 
-**Erreur :**
-```
-bash: docker: command not found
-```
-
-**Solution :**
 ```bash
-# Vérifier l'installation
-which docker
+# Supprimer les conteneurs arrêtés
+docker container prune
 
-# Si rien ne s'affiche, Docker n'est pas installé
-# Recommencer depuis l'étape 6
-```
+# Supprimer les images non utilisées
+docker image prune -a
 
----
+# Supprimer les volumes non utilisés
+docker volume prune
 
-### Problème 4 : Port 8080 déjà utilisé
-
-**Erreur :**
-```
-Error starting userland proxy: listen tcp 0.0.0.0:8080: bind: address already in use
-```
-
-**Solution :**
-```bash
-# Utiliser un autre port
-docker run -d -p 8081:80 --name test-nginx nginx
-
-# Ou trouver quel processus utilise le port 8080
-sudo lsof -i :8080
-```
-
----
-
-### Problème 5 : Pas assez d'espace disque
-
-**Erreur :**
-```
-no space left on device
-```
-
-**Solution :**
-```bash
-# Nettoyer les images, conteneurs et volumes non utilisés
+# TOUT nettoyer (⚠️ Attention !)
 docker system prune -a --volumes
-
-# Attention : cela supprime TOUT ce qui n'est pas utilisé !
 ```
 
 ---
 
-### Problème 6 : Docker trop lent
+# 📊 Tableau Récapitulatif
 
-**Symptômes :** Téléchargement très lent, conteneurs qui mettent du temps à démarrer
-
-**Solutions :**
-```bash
-# 1. Vérifier l'espace disque
-df -h
-
-# 2. Vérifier la RAM
-free -h
-
-# 3. Redémarrer Docker
-sudo systemctl restart docker
-
-# 4. Nettoyer le cache
-docker system prune
-```
+| Critère | Linux | macOS | Windows |
+|---------|-------|-------|---------|
+| **Installation** | Docker Engine | Docker Desktop | Docker Desktop |
+| **Commande** | `docker` | `docker` | `docker` |
+| **Compose v2** | Plugin | Intégré | Intégré |
+| **Interface graphique** | Non | Oui | Oui |
+| **Démarrage auto** | systemctl | Oui | Oui |
+| **WSL requis** | Non | Non | Oui (WSL 2) |
+| **Performances** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
 
 ---
 
-## 📊 Commandes de vérification finale
+# 🆘 Besoin d'Aide ?
 
-Copiez-collez ce bloc complet pour tout vérifier d'un coup :
+## Documentation officielle
 
-```bash
-echo "=== Vérification de l'installation Docker ==="
-echo ""
-echo "1. Version Docker:"
-docker --version
-echo ""
-echo "2. Version Docker Compose:"
-docker compose version
-echo ""
-echo "3. Informations Docker:"
-docker info | grep -E "Server Version|Operating System|Total Memory"
-echo ""
-echo "4. Services Docker:"
-sudo systemctl is-active docker
-echo ""
-echo "5. Permissions (vous devez voir 'docker' dans la liste):"
-groups | grep docker && echo "✅ Groupe docker OK" || echo "❌ Groupe docker manquant"
-echo ""
-echo "=== Fin de la vérification ==="
-```
+- **Linux** : https://docs.docker.com/engine/install/ubuntu/
+- **macOS** : https://docs.docker.com/desktop/install/mac-install/
+- **Windows** : https://docs.docker.com/desktop/install/windows-install/
+
+## Communauté
+
+- **Forums Docker** : https://forums.docker.com/
+- **Stack Overflow** : https://stackoverflow.com/questions/tagged/docker
+- **Reddit** : r/docker
 
 ---
 
-## ✅ Checklist de validation
+# 🚀 Et Maintenant ?
 
-Cochez chaque point avant de passer au cours suivant :
-
-- [ ] `docker --version` affiche une version
-- [ ] `docker compose version` affiche une version
-- [ ] `docker run hello-world` fonctionne SANS `sudo`
-- [ ] `docker ps` fonctionne SANS `sudo`
-- [ ] Vous avez lancé et accédé à Nginx sur http://localhost:8080
-- [ ] Docker démarre automatiquement au boot du système
-- [ ] Vous avez nettoyé les conteneurs de test
-
-**Si tous les points sont cochés : BRAVO ! Vous êtes prêt ! 🎉**
-
----
-
-## 🎓 Récapitulatif
-
-### Ce que vous avez installé
-
-- ✅ **Docker Engine** : Le moteur principal qui fait tourner les conteneurs
-- ✅ **Docker CLI** : L'interface en ligne de commande
-- ✅ **Docker Compose** : Pour gérer des applications multi-conteneurs
-- ✅ **containerd** : Le runtime qui gère les conteneurs
-- ✅ **BuildKit** : Pour construire des images optimisées
-
-### Les commandes à retenir
-
-```bash
-# Vérifier l'installation
-docker --version
-docker compose version
-
-# Lancer un conteneur
-docker run [image]
-
-# Voir les conteneurs en cours
-docker ps
-
-# Arrêter un conteneur
-docker stop [nom]
-
-# Nettoyer
-docker system prune
-```
-
----
-
-## 🚀 Et maintenant ?
-
-**Félicitations ! Docker est installé et configuré ! 🎉**
-
-Vous êtes maintenant prêt pour le **Cours 1 : Pourquoi Docker ?**
+**Félicitations ! Docker est installé ! 🎉**
 
 ### Avant de continuer
 
-Prenez 5 minutes pour :
-1. Redémarrer votre ordinateur (pour finaliser les permissions)
-2. Ouvrir un nouveau terminal
-3. Taper `docker run hello-world` pour confirmer que tout marche
+1. **Redémarrer votre ordinateur** (pour finaliser l'installation)
+2. **Ouvrir un nouveau terminal**
+3. **Taper** `docker run hello-world` pour confirmer
+
+### Prochaine étape
+
+**➡️ Cours 1 : Pourquoi Docker ?**
+
+Vous allez découvrir :
+- Pourquoi Docker a été créé
+- Quel problème il résout
+- Les cas d'usage concrets
 
 ---
 
-## 📚 Ressources supplémentaires
+## 💡 Conseils avant de commencer
 
-### Documentation officielle
-
-- [Installation Ubuntu - Docker Docs](https://docs.docker.com/engine/install/ubuntu/)
-- [Post-installation - Docker Docs](https://docs.docker.com/engine/install/linux-postinstall/)
-
-### Commandes utiles
-
-```bash
-# Désinstaller Docker complètement
-sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo rm -rf /var/lib/docker
-sudo rm -rf /var/lib/containerd
-
-# Réinstaller depuis zéro
-# Recommencer depuis l'étape 1
-```
+1. **Pas de sudo sur Linux** : Si vous devez utiliser `sudo`, c'est que les permissions ne sont pas bien configurées
+2. **Vérifier l'espace disque** : Docker peut prendre beaucoup de place (nettoyer avec `docker system prune`)
+3. **Internet requis** : Pour télécharger les images Docker
+4. **Patience** : Les premiers téléchargements peuvent être longs
 
 ---
 
-## 💡 Conseils pour la suite
+## 🎯 Objectif du prochain cours
 
-1. **Ne jamais utiliser sudo** : Si vous devez utiliser `sudo`, c'est que les permissions ne sont pas bien configurées
-2. **Nettoyer régulièrement** : `docker system prune` pour libérer de l'espace
-3. **Vérifier l'espace disque** : Docker peut vite prendre beaucoup de place
-4. **Lire les messages d'erreur** : Ils sont souvent très explicites
+Dans le **Cours 1**, vous comprendrez :
+- Le problème "Ça marche sur mon PC !"
+- Comment Docker résout ce problème
+- La différence entre VM et conteneur
+- Pourquoi 70% des développeurs utilisent Docker
 
----
-
-## ❓ Besoin d'aide ?
-
-Si vous rencontrez un problème non couvert ici :
-
-1. Vérifiez la section Troubleshooting ci-dessus
-2. Consultez le **cours-14-debug-troubleshooting.md**
-3. Relisez les messages d'erreur (ils contiennent souvent la solution)
-4. Demandez de l'aide au formateur
+**Bon courage pour la suite ! 💪**
 
 ---
 
-**🎯 Prochaine étape : Cours 1 - Pourquoi Docker ?**
-
-**Rappel :** N'oubliez pas de redémarrer votre session ou ordinateur pour que les permissions prennent effet !
-
-Bon courage pour la suite de votre apprentissage ! 💪
+**Version :** 1.0 - Installation Multi-OS
+**Systèmes couverts :** Linux (Ubuntu/Debian), macOS (Intel & Apple Silicon), Windows 10/11
+**Dernière mise à jour :** Novembre 2025

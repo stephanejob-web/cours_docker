@@ -5,15 +5,42 @@
 
 **Public cible :** Étudiants en reconversion professionnelle, aucune connaissance Docker requise.
 
-**Durée totale estimée :** 20-25 heures
+**Durée totale estimée :** 21-26 heures
 
 ---
 
 ## 📚 STRUCTURE DE LA FORMATION
 
-### 🔵 BLOC 1 : DÉCOUVERTE & FONDATIONS (4-5h)
+### 🔵 BLOC 1 : DÉCOUVERTE & FONDATIONS (4h30-5h30)
 
-**Objectif :** Comprendre pourquoi Docker existe et maîtriser les commandes de base
+**Objectif :** Installer Docker, comprendre pourquoi il existe et maîtriser les commandes de base
+
+#### 🔧 Cours 00 : Installation de Docker - Tous Systèmes
+**Durée :** 30-45 min (selon le système)
+**Type :** Pratique
+**Contenu :**
+- **🐧 Linux (Ubuntu/Debian)** :
+  - Installation Docker Engine
+  - Configuration des permissions (groupe docker)
+  - 8 étapes détaillées
+- **🍎 macOS (Intel & Apple Silicon)** :
+  - Installation Docker Desktop
+  - Configuration via Homebrew ou DMG
+  - Paramètres recommandés
+- **🪟 Windows 10/11** :
+  - Installation Docker Desktop
+  - Configuration WSL 2
+  - Activation de la virtualisation
+- **Pour tous les OS** :
+  - Tests de validation complets
+  - Troubleshooting spécifique à chaque système
+  - Checklist de vérification finale
+  - Tableau comparatif Linux/Mac/Windows
+
+**Prérequis :** Linux, macOS ou Windows
+**Acquis :** Docker opérationnel sur votre système
+
+---
 
 #### 📘 Cours 01 : Pourquoi Docker ?
 **Durée :** 30 min
@@ -344,7 +371,7 @@
 
 ```
 SEMAINE 1 : Découverte
-├── Jour 1 : Cours 01 + 02 (Théorie)
+├── Jour 1 : Cours 00 (Installation) + Cours 01 + 02 (Théorie)
 ├── Jour 2 : Cours 03 (Pratique commandes)
 └── Jour 3 : Révisions + Exercices
 
@@ -375,6 +402,8 @@ SEMAINE 5 : Projet final
 
 **À la fin de la formation, l'étudiant est capable de :**
 
+✅ Installer Docker et Docker Compose correctement sur Ubuntu
+✅ Configurer les permissions (utiliser Docker sans sudo)
 ✅ Expliquer pourquoi Docker est utilisé
 ✅ Différencier image et conteneur
 ✅ Utiliser toutes les commandes Docker de base
@@ -435,10 +464,33 @@ SEMAINE 5 : Projet final
 
 ---
 
-**Version :** 2.0 - Restructurée pour débutants
+**Version :** 2.1 - Ajout du cours d'installation
 **Date :** Novembre 2025
 **Auteur :** Formation Docker pour reconversion professionnelle
 **Contact formateur :** [À compléter]
+
+---
+
+## 📋 CHANGELOG
+
+### Version 2.1 - Novembre 2025
+- ✅ Ajout du **Cours 00 : Installation de Docker - Tous Systèmes**
+  - **Linux (Ubuntu/Debian)** : Installation Docker Engine (8 étapes)
+  - **macOS (Intel & Apple Silicon)** : Installation Docker Desktop
+  - **Windows 10/11** : Installation Docker Desktop + WSL 2
+  - Guide complet d'installation pas-à-pas pour chaque OS
+  - Configuration des permissions (Linux)
+  - Troubleshooting spécifique à chaque système (15+ problèmes couverts)
+  - Tests de validation complets (hello-world, nginx, docker-compose)
+  - Checklist de vérification finale
+  - Tableau comparatif Linux/Mac/Windows
+- ✅ Mise à jour de la durée totale (21-26h)
+- ✅ Ajout des critères de réussite pour l'installation
+
+### Version 2.0 - Novembre 2025
+- Restructuration complète de la formation
+- 15 cours détaillés pour débutants
+- Projets pratiques intégrés
 
 ---
 
@@ -452,13 +504,24 @@ SEMAINE 5 : Projet final
 - Faire pratiquer, pratiquer, pratiquer !
 
 **Matériel nécessaire :**
-- PC avec Docker installé pour chaque étudiant
-- Accès Internet (pour télécharger les images)
+- PC avec Linux, macOS ou Windows pour chaque étudiant
+- Accès administrateur (sudo sur Linux, admin sur Windows/Mac)
+- 10 Go d'espace disque minimum
+- 4 Go de RAM minimum (8 Go recommandé)
+- Accès Internet (pour télécharger Docker et les images)
 - Projecteur/écran pour les démos
 - Tableau blanc pour les schémas
 
 **Difficultés fréquentes :**
+- **Installation ratée** → Dédier TOUTE la première session au Cours 00, ne pas précipiter
+- **Permissions Docker** → Vérifier que chaque étudiant peut lancer `docker ps` SANS sudo
 - Confusion image vs conteneur → Répéter l'analogie recette/pizza
 - Oubli d'être dans le bon dossier avec `-v $(pwd)` → Insister sur `pwd` avant !
 - Ports déjà utilisés → Expliquer `docker ps` et `docker stop`
 - Peur du terminal → Rassurer, montrer que c'est juste des phrases en anglais
+
+**⚠️ Point critique pour le formateur :**
+- Le Cours 00 (Installation) est **CRUCIAL** - Si Docker ne fonctionne pas, toute la formation échoue
+- Prévoir 45 min minimum pour l'installation (30 min cours + 15 min dépannage)
+- Tester l'installation de CHAQUE étudiant avant de passer au Cours 01
+- Toujours avoir une clé USB avec les images Docker essentielles (hello-world, nginx) en cas de problème réseau
