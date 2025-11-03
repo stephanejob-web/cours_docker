@@ -18,114 +18,33 @@
 
 **Le terminal, c'est la fenêtre où on tape des commandes pour parler à Docker.**
 
-**⚠️ IMPORTANT : La méthode est DIFFÉRENTE selon votre système d'exploitation !**
-
-Choisissez VOTRE système ci-dessous :
-
 ---
 
-### 🪟 VOUS ÊTES SUR WINDOWS ?
+### 🖥️ Ouvrir le Terminal
 
-**Ouvrir PowerShell (recommandé) :**
+**La plupart d'entre vous êtes sur Ubuntu/Linux, voici comment ouvrir le terminal :**
 
-**Méthode 1 : Avec le menu Démarrer**
-1. Cliquez sur le menu Démarrer (en bas à gauche)
-2. Tapez "PowerShell"
-3. Cliquez sur "Windows PowerShell"
-
-**Méthode 2 : Avec le clavier (plus rapide)**
-- Appuyez sur `Windows + X` en même temps
-- Cliquez sur "Windows PowerShell" ou "Terminal"
-
-**Méthode 3 : Avec la recherche**
-- Appuyez sur `Windows + S`
-- Tapez "cmd" ou "powershell"
-- Appuyez sur Entrée
-
-**Ce que vous devriez voir :**
+**Méthode 1 : Avec le clavier (SUPER RAPIDE)** ⭐
 ```
-PS C:\Users\VotreNom>
+Appuyez sur : Ctrl + Alt + T
 ```
-
-✅ **Vous voyez ça ? Parfait ! Vous pouvez commencer !**
-
-**💡 Note pour Windows :** Toutes les commandes Docker dans ce cours fonctionnent exactement pareil sur Windows, Linux et Mac !
-
----
-
-### 🐧 VOUS ÊTES SUR LINUX (Ubuntu, Debian, etc.) ?
-
-**Ouvrir le Terminal :**
-
-**Méthode 1 : Avec le clavier (SUPER RAPIDE)**
-- Appuyez sur `Ctrl + Alt + T` en même temps
-- Boom ! Le terminal s'ouvre ! 🚀
+→ Boom ! Le terminal s'ouvre ! 🚀
 
 **Méthode 2 : Avec le menu Applications**
 1. Cliquez sur "Activités" (en haut à gauche)
 2. Tapez "Terminal"
 3. Cliquez sur l'icône du Terminal
 
-**Méthode 3 : Clic droit sur le bureau**
-- Faites un clic droit sur le bureau
-- Cliquez sur "Ouvrir un terminal" (si l'option existe)
-
 **Ce que vous devriez voir :**
 ```
 votre-nom@votre-pc:~$
 ```
 
-✅ **Vous voyez ça ? Parfait ! Vous pouvez commencer !**
+✅ **Vous voyez quelque chose comme ça ? Parfait ! Vous pouvez commencer !**
 
 ---
 
-### 🍎 VOUS ÊTES SUR MAC ?
-
-**Ouvrir le Terminal :**
-
-**Méthode 1 : Avec Spotlight (SUPER RAPIDE)**
-1. Appuyez sur `Cmd + Espace` en même temps
-2. Tapez "Terminal"
-3. Appuyez sur Entrée
-
-**Méthode 2 : Avec Launchpad**
-1. Ouvrez Launchpad (icône fusée dans le Dock)
-2. Tapez "Terminal" dans la recherche
-3. Cliquez sur Terminal
-
-**Méthode 3 : Avec le Finder**
-1. Ouvrez le Finder
-2. Allez dans "Applications" → "Utilitaires"
-3. Double-cliquez sur "Terminal"
-
-**Ce que vous devriez voir :**
-```
-VotreNom@MacBook-Pro ~ %
-```
-
-✅ **Vous voyez ça ? Parfait ! Vous pouvez commencer !**
-
----
-
-### 🎯 Récapitulatif : Comment ouvrir le terminal ?
-
-| Système | Méthode la plus rapide |
-|---------|------------------------|
-| **Windows** | `Windows + X` puis cliquez sur PowerShell |
-| **Linux** | `Ctrl + Alt + T` |
-| **Mac** | `Cmd + Espace` puis tapez "Terminal" |
-
-**💡 Conseil :** Gardez cette fenêtre ouverte pendant TOUT le cours ! Vous allez en avoir besoin ! 😊
-
----
-
-### ❓ Comment savoir sur quel système je suis ?
-
-**Vous ne savez pas quel système vous avez ?** Pas de panique !
-
-- **Windows** → Vous voyez le logo Windows en bas à gauche de votre écran
-- **Mac** → Vous voyez une pomme 🍎 en haut à gauche de votre écran
-- **Linux** → Vous ne voyez ni Windows ni la pomme (et vous le savez généralement 😄)
+**💡 Conseil :** Gardez cette fenêtre de terminal ouverte pendant TOUT le cours ! Vous allez en avoir besoin ! 😊
 
 ---
 
@@ -135,25 +54,7 @@ VotreNom@MacBook-Pro ~ %
 
 ## ✅ Partie 1 : Est-ce que Docker est bien installé ?
 
-**⚠️ NOTE IMPORTANTE selon votre système :**
-
-### 🪟 Sur Windows et 🍎 Mac
-Vous utilisez probablement **Docker Desktop** (l'application avec l'icône de baleine bleue 🐳).
-
-**Vérifiez que Docker Desktop tourne :**
-- **Windows** : Regardez en bas à droite de votre écran (près de l'horloge). Vous devez voir l'icône de la baleine 🐳
-- **Mac** : Regardez en haut à droite. Vous devez voir l'icône de la baleine 🐳
-
-**Si vous ne voyez PAS l'icône :**
-1. Cherchez "Docker Desktop" dans vos applications
-2. Lancez-le
-3. Attendez quelques secondes qu'il démarre
-4. L'icône de la baleine devrait apparaître
-
-✅ **L'icône est là ? Parfait, Docker tourne !**
-
-### 🐧 Sur Linux
-Docker tourne comme un service en arrière-plan. Pas besoin d'application graphique !
+**Sur Ubuntu/Linux, Docker tourne comme un service en arrière-plan. Pas besoin d'application graphique !**
 
 ---
 
@@ -475,7 +376,7 @@ a1b2c3d4e5f6   nginx   "/docker-entrypoint.…"   30 seconds ago   Up 29 seconds
 | **STATUS** | Il tourne depuis combien de temps | Up 29 seconds (il tourne depuis 29 secondes) |
 | **NAMES** | Le nom qu'on lui a donné | mon-serveur-web |
 
-**C'est comme le gestionnaire de tâches de Windows, mais pour Docker !**
+**C'est comme un gestionnaire de tâches, mais pour Docker !**
 
 ---
 
@@ -737,9 +638,6 @@ docker cp mon-serveur-web:/usr/share/nginx/html/index.html ./page.html
 
 **📁 NOTE SUR LES CHEMINS DE FICHIERS :**
 
-Les chemins sont différents selon votre système !
-
-**🐧 Linux / 🍎 Mac :**
 ```bash
 # Le point = dossier actuel
 ./page.html
@@ -749,24 +647,6 @@ Les chemins sont différents selon votre système !
 
 # Chemin absolu
 /home/votre-nom/Documents/page.html
-```
-
-**🪟 Windows (PowerShell) :**
-```bash
-# Le point = dossier actuel (pareil)
-./page.html
-
-# Votre dossier Documents
-C:/Users/VotreNom/Documents/page.html
-
-# ⚠️ ATTENTION : Utilisez des / et PAS des \
-# ❌ MAUVAIS : C:\Users\VotreNom\page.html
-# ✅ BON : C:/Users/VotreNom/page.html
-```
-
-**💡 Astuce Windows :** Dans PowerShell, vous pouvez aussi utiliser :
-```bash
-$HOME/Documents/page.html  # $HOME = votre dossier utilisateur
 ```
 
 ---
@@ -999,17 +879,85 @@ docker rm site1 site2 site3
 
 ---
 
+## 🧠 AVANT TOUT : Comprendre ce qu'on va faire
+
+### Le plan de l'exercice (en 3 étapes simples)
+
+**Imaginez que vous construisez une maison avec 2 pièces :**
+
+```
+┌──────────────────────────────────────────┐
+│         VOTRE MAISON (le réseau)         │
+│                                          │
+│  ┌─────────────┐      ┌──────────────┐  │
+│  │   Pièce 1   │◄────►│   Pièce 2    │  │
+│  │             │      │              │  │
+│  │   PHP       │      │   MariaDB    │  │
+│  │ (site web)  │      │ (stockage)   │  │
+│  └─────────────┘      └──────────────┘  │
+│         ▲                                │
+│         │                                │
+│    Porte d'entrée                        │
+│    (port 8080)                           │
+└──────────────────────────────────────────┘
+         ▲
+         │
+    Vous dans votre
+    navigateur web
+```
+
+**Les 3 étapes :**
+
+**1️⃣ CONSTRUIRE LA MAISON** (créer un réseau Docker)
+- Sans maison, les 2 pièces ne peuvent pas exister ensemble
+- Le réseau = le terrain sur lequel on construit
+
+**2️⃣ CONSTRUIRE LES 2 PIÈCES** (lancer 2 conteneurs)
+- Pièce 1 = PHP (le site web)
+- Pièce 2 = MariaDB (la base de données)
+- Les 2 pièces sont dans la même maison, donc elles peuvent se parler !
+
+**3️⃣ INSTALLER UNE PORTE D'ENTRÉE** (ouvrir le port 8080)
+- Pour que VOUS puissiez entrer dans la maison depuis votre navigateur
+- Sans porte, vous ne pouvez pas accéder au site !
+
+**Simple non ? Maintenant on va le faire pour de vrai !** 💪
+
+---
+
 **📁 PRÉPARATION : Créer les fichiers**
 
 **1. Créez un dossier pour le projet**
+
+**💡 POURQUOI un dossier ?**
+- Votre fichier PHP doit être quelque part sur votre PC
+- Docker va "regarder" dans ce dossier pour trouver votre fichier
+- C'est comme créer un dossier de projet pour votre code
+
+**TAPEZ CES COMMANDES :**
 ```bash
 mkdir mon-projet-docker
 cd mon-projet-docker
 ```
 
+**Vérifiez que vous êtes dans le bon dossier :**
+```bash
+pwd
+```
+→ Vous devriez voir quelque chose comme `/home/votre-nom/mon-projet-docker`
+
+✅ **Vous êtes dans le dossier ? Parfait !**
+
+---
+
 **2. Créez un fichier PHP**
 
-**Linux/Mac :**
+**💡 CE QU'ON VA FAIRE :**
+- On va créer un fichier `index.php` DANS ce dossier
+- Ce fichier contient le code de notre site web
+- Plus tard, Docker va "lire" ce fichier pour afficher le site
+
+**TAPEZ CETTE COMMANDE :**
 ```bash
 cat > index.php << 'EOF'
 <!DOCTYPE html>
@@ -1089,9 +1037,6 @@ cat > index.php << 'EOF'
 </html>
 EOF
 ```
-
-**Windows (PowerShell) :**
-Créez un fichier `index.php` avec le Bloc-notes et copiez-collez le code ci-dessus.
 
 ---
 
@@ -1211,9 +1156,12 @@ docker ps
 ```
 ✅ Vous devez voir `ma-base-de-donnees` avec "Up"
 
-**Étape 4 : Lancer PHP**
+**Étape 4 : Lancer PHP (LISEZ BIEN LES EXPLICATIONS !)**
 
-**Linux/Mac :**
+**🧠 AVANT DE TAPER LA COMMANDE, COMPRENONS :**
+
+Cette commande est la plus importante de tout l'exercice ! On va la décomposer ligne par ligne.
+
 ```bash
 docker run -d \
   --name mon-site-php \
@@ -1223,29 +1171,504 @@ docker run -d \
   php:8.2-apache
 ```
 
-**Windows (PowerShell) :**
+---
+
+### 🎓 DÉCORTIQUONS CETTE COMMANDE (super important !)
+
+**Ligne 1 : `docker run -d`**
+- Lance un conteneur
+- `-d` = mode détaché (tourne en fond)
+✅ Simple !
+
+**Ligne 2 : `--name mon-site-php`**
+- Donne le nom "mon-site-php" au conteneur
+✅ Simple aussi !
+
+**Ligne 3 : `--network mon-reseau`**
+- Met le conteneur dans le réseau "mon-reseau"
+- Grâce à ça, il pourra parler à MariaDB !
+✅ OK !
+
+**Ligne 4 : `-p 8080:80` (la PORTE d'ENTRÉE)**
+
+**💡 EXPLICATION SIMPLE :**
+
+Imaginez que le conteneur PHP est une maison avec une porte :
+- La porte de la maison est le port **80** (c'est le port par défaut pour les sites web)
+- MAIS vous ne pouvez pas rentrer directement par cette porte depuis votre PC !
+- Il faut créer un "tunnel" entre votre PC et la maison
+
+**Le tunnel fonctionne comme ça :**
+```
+VOTRE PC              DOCKER              CONTENEUR PHP
+(port 8080) ───────────────────────► (port 80)
+
+Vous tapez            Docker fait         Apache (serveur web)
+localhost:8080        le lien            écoute sur le port 80
+dans le navigateur
+```
+
+**En français simple :**
+- Vous tapez `http://localhost:8080` dans votre navigateur
+- Docker dit "Ah ! Port 8080 ? Je redirige vers le conteneur PHP port 80 !"
+- Le site s'affiche ! ✨
+
+**Pourquoi 8080 et pas 80 directement ?**
+- Le port 80 sur votre PC est souvent déjà utilisé
+- 8080 est un port "libre" qu'on peut utiliser
+- C'est juste une convention pratique
+
+---
+
+**Ligne 5 : `-v $(pwd):/var/www/html` (LE POINT LE PLUS IMPORTANT !)**
+
+### 🔑 CETTE LIGNE EST LA CLÉ DE TOUT ! LISEZ BIEN !
+
+**💡 LE PROBLÈME :**
+
+Vous avez créé `index.php` sur VOTRE PC, dans le dossier `mon-projet-docker`.
+
+**MAIS** le conteneur PHP est une machine séparée, isolée !
+
+```
+┌─────────────────┐         ┌──────────────────┐
+│   VOTRE PC      │         │  CONTENEUR PHP   │
+│                 │         │                  │
+│  mon-projet-    │    ?    │  /var/www/html   │
+│  docker/        │         │                  │
+│  └─ index.php   │         │  (vide !)        │
+└─────────────────┘         └──────────────────┘
+```
+
+**Le conteneur PHP cherche les fichiers dans `/var/www/html`**
+
+**MAIS votre fichier est sur VOTRE PC !**
+
+**Comment faire pour que le conteneur voie votre fichier ?** 🤔
+
+---
+
+### 💡 LA SOLUTION : LE MONTAGE DE VOLUME (-v)
+
+**Le montage de volume = créer un "portail magique" entre votre PC et le conteneur**
+
+```
+┌─────────────────┐         ┌──────────────────┐
+│   VOTRE PC      │         │  CONTENEUR PHP   │
+│                 │         │                  │
+│  mon-projet-    │ ═══════►│  /var/www/html   │
+│  docker/        │ PORTAIL │                  │
+│  └─ index.php   │ MAGIQUE │  └─ index.php    │
+└─────────────────┘         └──────────────────┘
+```
+
+**Grâce à `-v`, c'est comme si les 2 dossiers étaient FUSIONNÉS !**
+
+---
+
+### 🎯 DÉCORTIQUONS `-v $(pwd):/var/www/html`
+
+**Syntaxe générale :**
+```
+-v  DOSSIER_SUR_VOTRE_PC : DOSSIER_DANS_LE_CONTENEUR
+```
+
+**Dans notre cas :**
+```
+-v  $(pwd) : /var/www/html
+    ▲▲▲▲▲    ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+    │         │
+    │         └─ Dossier DANS le conteneur où Apache cherche les fichiers
+    │
+    └─ $(pwd) = "Print Working Directory" = le dossier actuel (mon-projet-docker)
+```
+
+**Traduction en français :**
+"Docker, prends le dossier où je suis actuellement (`mon-projet-docker`) et fais-le apparaître dans le conteneur à l'emplacement `/var/www/html`"
+
+---
+
+### ⚠️ ERREUR FRÉQUENTE : Être dans le mauvais dossier !
+
+**CE QUI SE PASSE SI VOUS N'ÊTES PAS DANS `mon-projet-docker` :**
+
+**❌ MAUVAIS - Vous êtes dans `/home/votre-nom` :**
+```
+/home/votre-nom$ docker run -d -v $(pwd):/var/www/html php:8.2-apache
+                  ▲
+                  │
+              $(pwd) = /home/votre-nom
+
+Résultat : Docker monte /home/votre-nom dans le conteneur
+           → index.php n'est PAS là !
+           → Le site ne marche pas ! ❌
+```
+
+**✅ BON - Vous êtes dans `/home/votre-nom/mon-projet-docker` :**
+```
+/home/votre-nom/mon-projet-docker$ docker run -d -v $(pwd):/var/www/html php:8.2-apache
+                                   ▲
+                                   │
+                               $(pwd) = /home/votre-nom/mon-projet-docker
+
+Résultat : Docker monte /home/votre-nom/mon-projet-docker dans le conteneur
+           → index.php est là !
+           → Le site marche ! ✅
+```
+
+**RÈGLE D'OR :**
+**Avant TOUTE commande avec `-v $(pwd)`, faites `pwd` pour vérifier où vous êtes !**
+
+---
+
+### 🎬 CE QUI SE PASSE CONCRÈTEMENT :
+
+**1. Vous créez `index.php` dans `mon-projet-docker` sur votre PC**
+
+**2. Vous lancez la commande avec `-v $(pwd):/var/www/html`**
+
+**3. Docker crée le "portail magique" :**
+   ```
+   mon-projet-docker/index.php  ═══► /var/www/html/index.php (dans le conteneur)
+   ```
+
+**4. Apache (le serveur web dans le conteneur) lit `/var/www/html/index.php`**
+
+**5. MAIS en réalité il lit votre fichier sur votre PC !**
+
+---
+
+### ✨ LE SUPER POUVOIR DU MONTAGE DE VOLUME
+
+**Le gros avantage ? VOUS POUVEZ MODIFIER LE FICHIER EN DIRECT !**
+
+```
+Vous modifiez index.php      Apache voit le changement
+sur votre PC avec un         IMMÉDIATEMENT !
+éditeur de code
+
+      ▼                            ▼
+[Enregistrer]  ═══════════► [Actualiser le navigateur]
+                            └─ Le site est déjà mis à jour !
+```
+
+**Pas besoin de :**
+- ❌ Copier le fichier dans le conteneur
+- ❌ Redémarrer le conteneur
+- ❌ Reconstruire quoi que ce soit
+
+**C'EST MAGIQUE !** ✨
+
+---
+
+### 🎨 TESTEZ VOUS-MÊME : Modification en temps réel
+
+**Une fois que votre site tourne sur `http://localhost:8080`, faites ce test :**
+
+**1. Ouvrez `index.php` avec un éditeur de texte (nano, gedit, VSCode, etc.)**
 ```bash
-docker run -d `
-  --name mon-site-php `
-  --network mon-reseau `
-  -p 8080:80 `
-  -v ${PWD}:/var/www/html `
+nano index.php
+```
+
+**2. Changez le titre de la page (ligne 6)**
+
+**Avant :**
+```php
+<title>Mon App Docker</title>
+```
+
+**Après :**
+```php
+<title>Mon App Docker - MODIFIÉ EN DIRECT !</title>
+```
+
+**3. Enregistrez le fichier**
+- Avec nano : `Ctrl + O` puis `Entrée`, puis `Ctrl + X`
+- Avec gedit ou VSCode : `Ctrl + S`
+
+**4. Allez dans votre navigateur et actualisez la page**
+- Appuyez sur `F5` ou `Ctrl + R`
+
+**5. 🎉 REGARDEZ L'ONGLET DU NAVIGATEUR !**
+- Le titre a changé INSTANTANÉMENT !
+- Vous n'avez PAS redémarré le conteneur !
+- Vous n'avez RIEN copié !
+
+---
+
+### 🧠 COMPRENDRE POURQUOI C'EST INSTANTANÉ
+
+**Voici ce qui se passe en réalité :**
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   VOTRE PC                          │
+│                                                     │
+│  📝 Vous modifiez index.php avec votre éditeur     │
+│     └─ Le fichier change sur votre disque dur      │
+│                                                     │
+│        ▼ SYNCHRONISATION AUTOMATIQUE ▼             │
+│                                                     │
+│  ┌──────────────────────────────────────┐          │
+│  │  CONTENEUR DOCKER                    │          │
+│  │                                      │          │
+│  │  Apache lit /var/www/html/index.php │          │
+│  │           ▲                          │          │
+│  │           │ Pointe vers              │          │
+│  │           │ votre fichier PC         │          │
+│  │           │ grâce au volume !        │          │
+│  └──────────────────────────────────────┘          │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+```
+
+**Explication simple :**
+
+1. **Le fichier N'EST PAS copié dans le conteneur !**
+2. **Le conteneur LIT DIRECTEMENT le fichier sur votre PC !**
+3. **Quand vous modifiez le fichier → Apache lit la nouvelle version immédiatement !**
+
+**C'est comme si Apache avait un "raccourci" vers votre fichier PC !**
+
+---
+
+### 💡 TESTEZ AVEC DU CSS AUSSI !
+
+**Changez le style de la page :**
+
+**Trouvez cette partie dans index.php (lignes 7-14) :**
+```php
+<style>
+    body {
+        font-family: Arial;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 50px;
+        text-align: center;
+    }
+```
+
+**Changez la couleur de fond :**
+```php
+<style>
+    body {
+        font-family: Arial;
+        background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);  ← NOUVELLE COULEUR !
+        color: white;
+        padding: 50px;
+        text-align: center;
+    }
+```
+
+**Enregistrez → Actualisez le navigateur → Le fond a changé de couleur ! 🎨**
+
+---
+
+### ✅ CE QUE VOUS DEVEZ RETENIR
+
+**Grâce à `-v $(pwd):/var/www/html` :**
+
+✅ Vous modifiez le code sur votre PC
+✅ Les changements sont visibles IMMÉDIATEMENT dans le conteneur
+✅ Pas besoin de redémarrer quoi que ce soit
+✅ C'est exactement comme si vous développiez sur votre PC normal !
+
+**C'est pour ça qu'on utilise Docker pour développer !** 🚀
+
+**Workflow de développement classique :**
+```
+1. Écrire du code dans votre éditeur
+2. Enregistrer (Ctrl + S)
+3. Actualiser le navigateur (F5)
+4. Voir le résultat
+5. Répéter → C'est ultra-rapide !
+```
+
+---
+
+### 📝 RÉCAP VISUEL
+
+```
+VOTRE COMMANDE :
+docker run -d --name mon-site-php --network mon-reseau -p 8080:80 -v $(pwd):/var/www/html php:8.2-apache
+
+CE QUI SE PASSE :
+1. Crée un conteneur nommé "mon-site-php"
+2. Le met dans le réseau "mon-reseau" (pour parler à MariaDB)
+3. Ouvre la porte : localhost:8080 → conteneur:80
+4. Crée le portail : mon-projet-docker → /var/www/html
+5. Installe PHP 8.2 avec Apache
+```
+
+---
+
+**MAINTENANT TAPEZ LA COMMANDE !**
+
+**⚠️ ATTENTION - SUPER IMPORTANT ⚠️**
+
+**AVANT de taper la commande, vérifiez que vous êtes DANS le dossier `mon-projet-docker` !**
+
+**Comment vérifier ? Tapez :**
+```bash
+pwd
+```
+
+**Vous DEVEZ voir :**
+```
+/home/votre-nom/mon-projet-docker
+```
+
+**Pourquoi c'est important ?**
+- `$(pwd)` = le dossier actuel
+- Si vous êtes dans `/home/votre-nom`, Docker va monter le MAUVAIS dossier !
+- Il faut être dans `mon-projet-docker` où se trouve `index.php` !
+
+**Si vous n'êtes PAS dans le bon dossier, allez-y :**
+```bash
+cd mon-projet-docker
+```
+
+✅ **Vous êtes dans le bon dossier ? Maintenant tapez la commande :**
+
+```bash
+docker run -d \
+  --name mon-site-php \
+  --network mon-reseau \
+  -p 8080:80 \
+  -v $(pwd):/var/www/html \
   php:8.2-apache
 ```
 
-**📝 Explications :**
-- `-p 8080:80` → Port 8080 de votre PC → Port 80 du conteneur
-- `-v $(pwd):/var/www/html` → Monte votre dossier actuel dans le conteneur
+**⏳ Attendez 5 secondes** que le conteneur démarre
 
-**Étape 5 : Installer l'extension MySQL dans PHP**
+**Vérifiez qu'il tourne :**
+```bash
+docker ps
+```
+✅ Vous devez voir `mon-site-php` avec "Up"
+
+---
+
+**Étape 5 : Installer l'extension MySQL dans PHP (TRÈS IMPORTANT !)**
+
+### 🤔 POURQUOI CETTE ÉTAPE ? (la réponse que PERSONNE ne vous donne !)
+
+**🧠 CE QU'IL FAUT COMPRENDRE :**
+
+Quand vous installez PHP sur votre PC normal, vous installez souvent "PHP + toutes les extensions".
+
+**MAIS** avec Docker, c'est différent !
+
+**L'image `php:8.2-apache` contient :**
+- ✅ PHP de base (le langage)
+- ✅ Apache (le serveur web)
+- ❌ MAIS PAS les extensions pour MySQL !
+
+**C'est comme acheter une voiture :**
+- ✅ Vous avez le moteur
+- ✅ Vous avez les roues
+- ❌ MAIS pas la radio !
+
+**Il faut installer la radio (l'extension MySQL) APRÈS !**
+
+---
+
+### 💡 POURQUOI PHP n'inclut PAS MySQL par défaut ?
+
+**3 raisons :**
+
+**1. Taille** → MySQL/MariaDB est gros ! Si tout le monde ne l'utilise pas, pourquoi le mettre ?
+
+**2. Flexibilité** → Certains utilisent MySQL, d'autres PostgreSQL, d'autres SQLite...
+   Docker vous laisse choisir ce dont VOUS avez besoin !
+
+**3. Sécurité** → Moins de code = moins de failles de sécurité
+
+**C'est pour ça qu'on doit l'installer manuellement !**
+
+---
+
+### 🔧 INSTALLER LES EXTENSIONS MYSQL
+
+**TAPEZ CETTE COMMANDE :**
 ```bash
 docker exec mon-site-php docker-php-ext-install pdo pdo_mysql
 ```
 
+### 🎓 DÉCOMPOSONS :
+
+**`docker exec`**
+→ "Docker, je veux exécuter une commande DANS un conteneur qui tourne"
+
+**`mon-site-php`**
+→ "Le conteneur s'appelle mon-site-php"
+
+**`docker-php-ext-install`**
+→ "Utilise l'outil d'installation d'extensions PHP"
+   (Cet outil est inclus dans l'image `php:8.2-apache` !)
+
+**`pdo pdo_mysql`**
+→ "Installe ces 2 extensions :"
+   - **pdo** = PHP Data Objects (pour se connecter à des bases de données)
+   - **pdo_mysql** = La couche spécifique pour MySQL/MariaDB
+
+---
+
+### 🎬 CE QUI SE PASSE QUAND VOUS TAPEZ LA COMMANDE :
+
+```
+1. Docker entre dans le conteneur "mon-site-php"
+2. Il compile l'extension PDO
+3. Il compile l'extension PDO_MySQL
+4. Il les active dans la configuration PHP
+```
+
+**Vous verrez défiler plein de lignes :**
+```
+Configuring for:
+PHP Api Version:         20220805
+Zend Module Api No:      20220805
+...
+Installing '/usr/local/lib/php/extensions/...'
+...
+```
+
+**C'EST NORMAL ! Ça compile les extensions.**
+
+**⏳ Ça prend environ 30 secondes à 1 minute.**
+
+**✅ Quand ça dit "complete" ou que ça s'arrête → c'est bon !**
+
+---
+
+### 🔄 POURQUOI IL FAUT REDÉMARRER ?
+
+**Imaginez que PHP est une voiture qui roule.**
+
+Vous venez d'installer la radio **pendant que la voiture roule** !
+
+**Pour que la radio fonctionne, il faut :**
+1. Arrêter la voiture
+2. Redémarrer la voiture
+3. Maintenant la radio marche !
+
+**C'est pareil pour PHP !**
+
+---
+
 **Étape 6 : Redémarrer PHP pour appliquer les changements**
+
+**TAPEZ ÇA :**
 ```bash
 docker restart mon-site-php
 ```
+
+**Ce qui se passe :**
+1. Docker arrête le conteneur (2 secondes)
+2. Docker redémarre le conteneur (2 secondes)
+3. PHP charge maintenant les nouvelles extensions !
+
+**✅ TERMINÉ ! Maintenant PHP peut parler à MariaDB !**
 
 ---
 
@@ -1318,7 +1741,234 @@ docker rmi php:8.2-apache mariadb:latest
 
 **C'EST EXACTEMENT COMME ÇA QUE FONCTIONNENT LES VRAIS SITES WEB !** 🚀
 
+---
+
+## 📚 RÉCAPITULATIF COMPLET : Qu'est-ce qu'on a fait exactement ?
+
+### 🎬 Le film complet de l'exercice
+
+**Imaginez que vous racontez à un ami ce que vous avez fait. Voici l'histoire :**
+
+---
+
+**CHAPITRE 1 : La préparation (sur votre PC)**
+
+1. Vous avez créé un dossier `mon-projet-docker`
+2. Vous y avez créé un fichier `index.php` qui contient le code du site web
+
+**À ce stade :**
+- ✅ Le fichier existe sur VOTRE PC
+- ❌ Docker ne sait pas encore qu'il existe
+
+---
+
+**CHAPITRE 2 : Construire le terrain (le réseau)**
+
+3. Vous avez créé un réseau Docker appelé `mon-reseau`
+
+**Pourquoi ?**
+- Pour que les 2 conteneurs (PHP et MariaDB) puissent se parler
+- Sans réseau = 2 personnes dans 2 pièces séparées sans téléphone
+- Avec réseau = 2 personnes avec un téléphone direct entre elles
+
+---
+
+**CHAPITRE 3 : Installer la base de données**
+
+4. Vous avez lancé MariaDB dans un conteneur
+5. Vous l'avez mis dans le réseau `mon-reseau`
+6. Vous lui avez donné un nom : `ma-base-de-donnees`
+
+**Le résultat :**
+```
+Réseau "mon-reseau"
+└── ma-base-de-donnees (MariaDB qui tourne)
+```
+
+---
+
+**CHAPITRE 4 : Installer le serveur web (LA PARTIE COMPLEXE !)**
+
+7. Vous avez lancé PHP/Apache dans un conteneur
+
+**MAIS** cette commande fait 4 choses magiques :
+
+**a) `-p 8080:80` → Ouvrir une porte d'entrée**
+```
+Votre navigateur → localhost:8080 → Conteneur PHP:80
+```
+
+**b) `-v $(pwd):/var/www/html` → Créer le portail magique**
+```
+Votre dossier mon-projet-docker ═══► /var/www/html dans le conteneur
+```
+→ Grâce à ça, Apache peut lire votre fichier index.php !
+
+**c) `--network mon-reseau` → Rejoindre le réseau**
+```
+Réseau "mon-reseau"
+├── ma-base-de-donnees (MariaDB)
+└── mon-site-php (PHP/Apache)  ← Peut maintenant parler à MariaDB !
+```
+
+**d) `php:8.2-apache` → Installer PHP + Apache**
+
+---
+
+**CHAPITRE 5 : Installer la "radio" (les extensions MySQL)**
+
+8. Vous avez installé `pdo` et `pdo_mysql`
+
+**Pourquoi ?**
+- L'image PHP de base n'a PAS les extensions MySQL
+- C'est comme une voiture sans radio
+- Il faut l'installer après !
+
+9. Vous avez redémarré le conteneur pour activer les extensions
+
+---
+
+**CHAPITRE 6 : Tester !**
+
+10. Vous ouvrez `http://localhost:8080` dans le navigateur
+
+**Le voyage de la requête :**
+```
+1. Votre navigateur → http://localhost:8080
+                      ▼
+2. Docker redirige → Conteneur PHP (port 80)
+                      ▼
+3. Apache cherche → /var/www/html/index.php
+                      ▼
+4. Grâce au montage de volume → Il trouve votre fichier sur votre PC !
+                      ▼
+5. PHP exécute le code
+                      ▼
+6. Le code se connecte à "ma-base-de-donnees"
+                      ▼
+7. Grâce au réseau → Docker trouve MariaDB !
+                      ▼
+8. PHP récupère les données de MariaDB
+                      ▼
+9. PHP génère le HTML
+                      ▼
+10. Apache renvoie le HTML → Docker → Votre navigateur
+                      ▼
+11. Vous voyez la page ! 🎉
+```
+
+---
+
+### 🔑 LES 3 CONCEPTS CLÉS À RETENIR
+
+**1. LE RÉSEAU (`--network`)**
+```
+Permet aux conteneurs de se parler par leur nom
+PHP peut dire "Hé ma-base-de-donnees, donne-moi les données !"
+```
+
+**2. LE MONTAGE DE VOLUME (`-v`)**
+```
+Fait apparaître vos fichiers PC dans le conteneur
+Vous modifiez index.php → Le changement est INSTANTANÉ dans le conteneur !
+```
+
+**3. LE MAPPING DE PORT (`-p`)**
+```
+Ouvre une porte pour accéder au conteneur depuis votre PC
+localhost:8080 → conteneur:80
+```
+
+---
+
+### 🎯 SCHÉMA FINAL : Tout comprendre d'un coup d'œil
+
+```
+┌────────────────────────────────────────────────────────────┐
+│                      VOTRE PC                              │
+│                                                            │
+│  📁 mon-projet-docker/                                     │
+│     └── index.php ─────────────┐                          │
+│                                │ Montage de volume        │
+│  🌐 Navigateur Web             │ (-v)                      │
+│     http://localhost:8080 ──┐  │                          │
+│                             │  │                          │
+└─────────────────────────────│──│───────────────────────────┘
+                              │  │
+                              │  │ Mapping de port (-p)
+                              │  │
+┌─────────────────────────────│──│───────────────────────────┐
+│                    DOCKER   │  │                           │
+│                             ▼  ▼                           │
+│  ┌────────────────────────────────────────────────┐        │
+│  │       Réseau "mon-reseau"                      │        │
+│  │                                                 │        │
+│  │   ┌──────────────────┐    ┌─────────────────┐ │        │
+│  │   │ mon-site-php     │◄──►│ ma-base-de-     │ │        │
+│  │   │                  │    │ donnees         │ │        │
+│  │   │ PHP + Apache     │    │                 │ │        │
+│  │   │                  │    │ MariaDB         │ │        │
+│  │   │ Port 80          │    │ Port 3306       │ │        │
+│  │   │                  │    │                 │ │        │
+│  │   │ /var/www/html/   │    │ Base de données │ │        │
+│  │   │ └─ index.php ────┼────┼─► visiteurs     │ │        │
+│  │   │    (pointeur)    │    │                 │ │        │
+│  │   └──────────────────┘    └─────────────────┘ │        │
+│  │           ▲                                    │        │
+│  │           │                                    │        │
+│  └───────────│────────────────────────────────────┘        │
+│              │                                             │
+│              └─── Pointe vers votre fichier PC             │
+│                   grâce au volume !                        │
+└────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### ❓ QUESTIONS FRÉQUENTES (avec réponses claires !)
+
+**Q1 : Pourquoi mon fichier index.php apparaît dans le conteneur ?**
+→ Grâce au montage de volume `-v $(pwd):/var/www/html`
+→ Docker crée un "lien magique" entre votre dossier et le conteneur
+
+**Q2 : Pourquoi PHP peut se connecter à MariaDB avec juste le nom ?**
+→ Grâce au réseau Docker !
+→ Dans le réseau, chaque conteneur a un "nom de domaine" = son nom de conteneur
+→ PHP dit "ma-base-de-donnees" → Docker trouve automatiquement l'adresse IP !
+
+**Q3 : Pourquoi il faut installer pdo/pdo_mysql ?**
+→ L'image PHP de base est "légère" → pas d'extensions par défaut
+→ Ça permet de garder l'image petite et de choisir ce dont vous avez besoin
+→ C'est comme un téléphone sans applications → vous installez ce que vous voulez !
+
+**Q4 : Si je modifie index.php, est-ce que je dois redémarrer le conteneur ?**
+→ **NON !** C'est ça la magie du volume !
+→ Modification → Enregistrement → Actualisation du navigateur → Changement visible !
+
+**Q5 : Pourquoi localhost:8080 et pas localhost:80 ?**
+→ Le port 80 est souvent déjà utilisé sur votre PC
+→ 8080 est un port "libre" et une convention pour le développement
+→ Vous pouvez utiliser n'importe quel port (8000, 3000, etc.)
+
+---
+
+### 🎓 TESTEZ VOTRE COMPRÉHENSION
+
+**Sans regarder les réponses, pouvez-vous expliquer à voix haute :**
+
+1. À quoi sert le réseau Docker ?
+2. À quoi sert `-v $(pwd):/var/www/html` ?
+3. À quoi sert `-p 8080:80` ?
+4. Pourquoi on installe pdo et pdo_mysql ?
+5. Que se passe-t-il quand vous tapez localhost:8080 dans le navigateur ?
+
+**Si vous pouvez répondre à ces 5 questions → VOUS AVEZ TOUT COMPRIS !** 🎉
+
+---
+
 **✅ MISSION ULTRA-ACCOMPLIE ! VOUS ÊTES UN VRAI PRO DOCKER !** 🏆
+
+**Maintenant vous comprenez VRAIMENT ce que vous faites, pas juste copier-coller des commandes !**
 
 ---
 
@@ -1402,62 +2052,21 @@ docker rm mon-site
 
 ---
 
-### Erreur 6 : "error during connect" (WINDOWS/MAC)
+### Erreur 6 : "error during connect"
 
 **Message complet :**
 ```
 error during connect: This error may indicate that the docker daemon is not running.
 ```
 
-**Problème :** Docker Desktop n'est pas lancé sur Windows/Mac
+**Problème :** Le service Docker ne tourne pas
 
-**Solution Windows/Mac :**
-1. Cherchez "Docker Desktop" dans vos applications
-2. Lancez-le
-3. Attendez que l'icône de la baleine 🐳 apparaisse en bas/haut de l'écran
-4. Réessayez votre commande
-
----
-
-### Erreur 7 : "path does not exist" lors de la copie (WINDOWS)
-
-**Message :**
-```
-Error: path does not exist
-```
-
-**Problème :** Vous avez utilisé des `\` au lieu de `/` dans les chemins Windows
-
-**❌ MAUVAIS :**
+**Solution :**
 ```bash
-docker cp mon-serveur-web:/tmp/file.txt C:\Users\VotreNom\file.txt
+sudo systemctl start docker
 ```
 
-**✅ BON :**
-```bash
-docker cp mon-serveur-web:/tmp/file.txt C:/Users/VotreNom/file.txt
-```
-
-**OU encore plus simple :**
-```bash
-docker cp mon-serveur-web:/tmp/file.txt ./file.txt
-```
-
----
-
-### Erreur 8 : "WSL 2 installation is incomplete" (WINDOWS uniquement)
-
-**Message :**
-```
-WSL 2 installation is incomplete
-```
-
-**Problème :** Sur Windows, Docker a besoin de WSL 2
-
-**Solution :** 
-1. Appelez votre formateur
-2. Il faut installer WSL 2 (Windows Subsystem for Linux)
-3. C'est une installation à faire une seule fois
+Si le problème persiste, appelez votre formateur.
 
 ---
 
